@@ -24,6 +24,11 @@ def get_content(file, mode="read"):
     if mode == "readlines":
         with codecs.open(file, "r", encoding="utf8") as f:
             s = f.readlines()
+            for i in range(len(s)):
+                s[i] = s[i].strip("\n")
+                s[i] = s[i].strip("\r")
+                s[i] = s[i].strip(" ")
+                s[i] = s[i].strip("\t")
     return s
 
 def get_content_list(file):
@@ -31,6 +36,9 @@ def get_content_list(file):
         s = f.readlines()
         for i in range(len(s)):
             s[i] = s[i].strip("\n")
+            s[i] = s[i].strip("\r")
+            s[i] = s[i].strip(" ")
+            s[i] = s[i].strip("\t")
     return s
     
 def write_content(file, content):
@@ -58,3 +66,8 @@ class RunningTimer:
         running_time = self.end_time - self.start_time
         return running_time
 
+if __name__ == "__main__":
+    file_path = r"C:\Users\Taikor\Desktop\test.txt"
+    result = get_content_list(file_path)
+    print(type(result[0]))
+    print(result)
