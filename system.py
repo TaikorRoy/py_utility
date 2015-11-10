@@ -8,6 +8,7 @@ import os
 import time
 import codecs
 import json
+import sys
 
 
 def listdir_enchanced(folder):
@@ -89,6 +90,14 @@ class RunningTimer:
         self.end_time = time.time()
         running_time = self.end_time - self.start_time
         return running_time
+
+
+def get_dir_of_main_script():
+    tmp = sys.path[0]
+    if sys.path[0] == "":
+        return os.getcwd()
+    else:
+        return tmp
 
 if __name__ == "__main__":
     file_path = r"C:\Users\Taikor\Desktop\test.txt"

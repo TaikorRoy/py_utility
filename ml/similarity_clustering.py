@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class DerivativeClustering:
     def __init__(self, _data, _threshold, _kernel):
         self.clusters = list()
