@@ -99,6 +99,31 @@ def get_dir_of_main_script():
     else:
         return tmp
 
+
+def create_abs_path(relative_pth):
+    base_path = get_dir_of_main_script()
+    abs_path = os.path.join(base_path, relative_pth)
+    return abs_path
+
+
+def get_formated_time(mode="text"):
+    struct_time = time.localtime()
+    year = struct_time.tm_year
+    month = struct_time.tm_mon
+    day = struct_time.tm_mday
+    hour = struct_time.tm_hour
+    min = struct_time.tm_min
+    sec = struct_time.tm_sec
+    if mode == "text":
+        formated_time = str(year) + "-" + str(month) + "-" + str(day) + " " + str(hour) + ":" + str(min) + ":" + str(sec)
+    elif mode == "log":
+        formated_time = str(year) + "-" + str(month) + "-" + str(day) + "-" + str(hour) + "-" + str(min) + "-" + str(sec)
+    else:
+        print("Error: Incorrect argument given, please check your value of mode")
+        raise Exception
+    return formated_time
+
+
 if __name__ == "__main__":
     file_path = r"C:\Users\Taikor\Desktop\test.txt"
     result = get_content_list(file_path)
